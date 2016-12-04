@@ -1,3 +1,5 @@
+var albums = [];
+var index = 0;
 var albumPicasso = {
     title: 'The Colors',
     artist: 'Pablo Picasso',
@@ -12,6 +14,7 @@ var albumPicasso = {
         { title: 'Magenta', duration: '2:15'}
     ]
 };
+albums.push(albumPicasso);
 
 var albumMarconi = {
     title: 'The Telephone',
@@ -27,6 +30,22 @@ var albumMarconi = {
         { title: 'Wrong phone number', duration: '2:15'}
     ]
 };
+albums.push(albumMarconi);
+
+var albumSting = {
+  title: '57th & 9th',
+  artist: 'Sting',
+  label: 'A&M Records',
+  year: '2016',
+  albumArtUrl: 'assets/images/album_covers/sting.jpg',
+  songs: [
+    { title: "I Can't Stop Thinking About You", duration: '3:31' },
+    { title: '50,000', duration: '4:17' },
+    { title: 'Down, Down, Down', duration: '3:48' },
+    { title: 'One Fine Day', duration: '3:14' }
+  ]
+};
+albums.push(albumSting);
 
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
@@ -57,6 +76,11 @@ var createSongRow = function(songNumber, songName, songLength) {
     for (var i = 0; i < album.songs.length; i++) {
         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
     }
+};
+
+function nextAlbum() {
+  setCurrentAlbum(albums[index]);
+  index = (index+1)%(albums.length);
 };
 
 window.onload = function() {
