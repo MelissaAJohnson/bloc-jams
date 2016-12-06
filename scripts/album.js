@@ -78,11 +78,13 @@ var createSongRow = function(songNumber, songName, songLength) {
     }
 };
 
-function nextAlbum() {
-  setCurrentAlbum(albums[index]);
-  index = (index+1)%(albums.length);
-};
-
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+
+    var albumCover = document.getElementsByClassName('album-cover-art')[0];
+
+    albumCover.addEventListener('click', function(event) {
+      setCurrentAlbum(albums[index]);
+      index = (index+1)%(albums.length);
+    });
 };
